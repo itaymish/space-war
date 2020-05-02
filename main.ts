@@ -659,9 +659,9 @@ c c c c c c c c c c c c c 1 c 1 c c c c 9 c c c c c c c c c c c
         game.showLongText("Click A to shoot asteroids and get a point.", DialogLayout.Full)
         game.showLongText("You have three hearts.", DialogLayout.Full)
         game.showLongText("Each collision with asteroids lowers one heart.", DialogLayout.Full)
-        game.showLongText("Well, that's all. Successfully!", DialogLayout.Full)
+        game.showLongText("Well, that's all. Good luck!", DialogLayout.Full)
     } else {
-        game.showLongText("OK. Click A to get started. Successfully!", DialogLayout.Full)
+        game.showLongText("OK. Click A to get started. Good luck!", DialogLayout.Full)
     }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
@@ -696,10 +696,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Projectile, function (sprite, otherSprite) {
     music.powerUp.play()
-    otherSprite.destroy()
+    otherSprite.destroy(effects.disintegrate, 500)
+    sprite.destroy(effects.ashes, 500)
     scene.cameraShake(4, 500)
     info.changeScoreBy(1)
-    otherSprite.startEffect(effects.disintegrate)
 })
 info.onLifeZero(function () {
     spaceship.startEffect(effects.disintegrate, 500)
